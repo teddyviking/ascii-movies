@@ -6,7 +6,11 @@ RSpec.describe "Ascii Movies" do
 			:title => "Los Cazafantasmas (1984)",
 			:rating => 7.8)
 	end
-
+	let(:fake) do
+		instance_double("Movie",
+			:title => "",
+			:rating => 0)
+	end
 	# it "MovieGetter raises error when no film is passed" do
 	# 	movie_getter = MovieGetter.new("", IMDBSearcher.new)
 	# 	expect{movie_getter.get_movie}.to raise_error "No movies where given"
@@ -29,8 +33,8 @@ RSpec.describe "Ascii Movies" do
 		expect(printer.print(format)).to eq("")
 	end
 
-	it "RatingPrinter paints an empty column when passed a movie with no rating" do
-		printer = RatingPrinter.new("")
+	it "RatingPrinter paints an empty column when passed a movie with a puntuation of 0" do
+		printer = RatingPrinter.new(fake)
 		expect(printer.print(format)).to eq("| |")
 	end
 end

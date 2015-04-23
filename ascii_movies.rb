@@ -35,12 +35,16 @@ class IMDBSearcher
 end
 
 class RatingPrinter
-	def initialize(movies)
-		@movies = movies
+	def initialize(movie)
+		@movie = movie
 	end
 
 	def print(format)
-		""
+		if @movie == ""
+			@movie
+		else
+			"| |"
+		end
 	end
 end
 

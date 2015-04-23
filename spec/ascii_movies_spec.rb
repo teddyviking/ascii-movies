@@ -22,11 +22,13 @@ RSpec.describe "Ascii Movies" do
 		expect{movie_getter.get_movie}.to raise_error "The search engine is not valid. Please use IMDBSearcher"
 	end
 
-	it "RatingPrinter paints nothing when an empty array is passed" do
-		printer = RatingPrinter.new([])
+	it "RatingPrinter paints nothing when no movie is passed" do
+		printer = RatingPrinter.new("")
 		format = "ascii"
 		expect(printer.print(format)).to eq("")
 	end
+
+	it "RatingPrinter paints a single column"
 end
 
 

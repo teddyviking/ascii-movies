@@ -33,3 +33,18 @@ class IMDBSearcher
 		search.movies[0]
 	end
 end
+
+class RatingPrinter
+	def initialize(movies)
+		@movies = movies
+	end
+
+	def print(format)
+		""
+	end
+end
+
+
+
+
+

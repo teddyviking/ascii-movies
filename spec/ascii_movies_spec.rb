@@ -8,11 +8,11 @@ RSpec.describe "Ascii Movies" do
 	end
 
 	it "MovieGetter returns an empty string when no film is passed" do
-		movie_getter = MovieGetter.new("")
+		movie_getter = MovieGetter.new("", IMDBSearcher.new)
 		expect(movie_getter.get_movie).to eq("")
 	end
 	it "MovieGetter returns the instance of a movie when a title passed" do
-		movie_getter = MovieGetter.new("Ghostbusters")
+		movie_getter = MovieGetter.new("Ghostbusters", IMDBSearcher.new)
 		expect(movie_getter.get_movie.title).to eq(ghostbusters.title)
 	end
 

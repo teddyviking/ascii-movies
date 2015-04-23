@@ -2,15 +2,16 @@ require 'pry'
 require 'imdb'
 
 class MovieGetter
-	def initialize(movie)
+	def initialize(movie, search_engine)
 		@movie = movie
+		@search_engine = search_engine
 	end
 
 	def get_movie
 		if @movie == ""
 			""
 		else
-			imdb_movie = IMDBSearcher.new.search_movie(@movie)
+			imdb_movie = @search_engine.search_movie(@movie)
 			my_movie = Movie.new(imdb_movie.title, imdb_movie.rating)
 		end
 	end

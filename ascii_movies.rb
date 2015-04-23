@@ -42,8 +42,10 @@ class RatingPrinter
 	def print(format)
 		if @movie == ""
 			@movie
-		else
+		elsif @movie.rating == 0
 			"| |"
+		else
+			'|#|'
 		end
 	end
 end

@@ -40,13 +40,13 @@ class RatingPrinter
 	end
 
 	def print(format)
-		if @movie == ""
-			@movie
-		elsif @movie.rating == 0
-			"| |"
-		else
-			'|#|'
-		end
+		output = ""
+		unless @movie == ""
+			rating = @movie.rating 
+			rating.times{|n| output << "|#|\n" }
+			output << "| |\n" if rating == 0
+		end	
+		output
 	end
 end
 

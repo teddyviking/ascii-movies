@@ -7,20 +7,20 @@ RSpec.describe "Ascii Movies" do
 			:rating => 7.8)
 	end
 	
-	# it "MovieGetter raises error when no film is passed" do
-	# 	movie_getter = MovieGetter.new("", IMDBSearcher.new)
-	# 	expect{movie_getter.get_movie}.to raise_error "No movies where given"
-	# end
-	# it "MovieGetter returns the instance of a movie when a title passed" do
-	# 	movie_getter = MovieGetter.new("Ghostbusters", IMDBSearcher.new)
-	# 	expect(movie_getter.get_movie.title).to eq(ghostbusters.title)
-	# end
+	it "MovieGetter raises error when no film is passed" do
+		movie_getter = MovieGetter.new("", IMDBSearcher.new)
+		expect{movie_getter.get_movie}.to raise_error "No movies where given"
+	end
+	it "MovieGetter returns the instance of a movie when a title passed" do
+		movie_getter = MovieGetter.new("Ghostbusters", IMDBSearcher.new)
+		expect(movie_getter.get_movie.title).to eq(ghostbusters.title)
+	end
 
-	# it "MovieGetter raises error when not using IMDBSearcher" do
-	# 	filmaffinity_searcher = "an awesome movie searcher"
-	# 	movie_getter = MovieGetter.new("Ghostbusters", filmaffinity_searcher)
-	# 	expect{movie_getter.get_movie}.to raise_error "The search engine is not valid. Please use IMDBSearcher"
-	# end
+	it "MovieGetter raises error when not using IMDBSearcher" do
+		filmaffinity_searcher = "an awesome movie searcher"
+		movie_getter = MovieGetter.new("Ghostbusters", filmaffinity_searcher)
+		expect{movie_getter.get_movie}.to raise_error "The search engine is not valid. Please use IMDBSearcher"
+	end
 	
 	format = "ascii"
 
@@ -34,6 +34,11 @@ RSpec.describe "Ascii Movies" do
 			:title => "",
 			:rating => 1)
 	end
+	let(:fake_movie_2) do
+		instance_double("Movie",
+			:title => "",
+			:rating => 2)
+	end
 
 	it "RatingPrinter paints nothing when no movie is passed" do
 		printer = RatingPrinter.new("")
@@ -42,12 +47,17 @@ RSpec.describe "Ascii Movies" do
 
 	it "RatingPrinter paints an empty column when passed a movie with a puntuation of 0" do
 		printer = RatingPrinter.new(fake_movie)
-		expect(printer.print(format)).to eq("| |")
+		expect(printer.print(format)).to eq("| |\n")
 	end
 	it "RatingPrinter paints a column with one # when passed a movie with a puntuation of 1" do
 		printer = RatingPrinter.new(fake_movie_1)
-		expect(printer.print(format)).to eq("|#|")
+		expect(printer.print(format)).to eq("|#|\n")
 	end
+	it "RatingPrinter paints a column with one # when passed a movie with a puntuation of 2" do
+		printer = RatingPrinter.new(fake_movie_2)
+		expect(printer.print(format)).to eq("|#|\n|#|\n")
+	end
+
 end
 
 

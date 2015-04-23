@@ -9,10 +9,12 @@ class MovieGetter
 
 	def get_movie
 		if @movie == ""
-			""
-		else
+			raise "No movies where given"
+		elsif @search_engine.class == IMDBSearcher
 			imdb_movie = @search_engine.search_movie(@movie)
-			my_movie = Movie.new(imdb_movie.title, imdb_movie.rating)
+			usable_movie = Movie.new(imdb_movie.title, imdb_movie.rating)
+		elsif @search_engine.class != IMDBSearcher
+			raise "The search engine is not valid. Please use IMDBSearcher"
 		end
 	end
 end

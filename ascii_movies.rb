@@ -48,28 +48,33 @@ class RatingPrinter
 		output
 	end
 
+
+	def define_ratings_grid
+		max_rating = get_highest_rating
+		output = define_output_structure(max_rating)
+		populate_output(output, max_rating)
+	end
+
 	def get_highest_rating
 		@movies.map{|movie| movie.rating}.max
 	end
 
-	def define_ratings_grid
-		output =[]
-		max_rating = get_highest_rating
+	def define_output_structure(max_rating)
+		output = []
 		max_rating.times{|n| output << []}
-		@movies.each_with_index do |movie, index|
+		output
+	end
+
+	def populate_output(output, max_rating)
+		@movies.each do |movie|
 			rating = movie.rating
 			diff = max_rating - rating
-			max_rating.times do |n|		
-				if rating < max_rating && n < diff			
-					output[n] << "| "		
-				else
-					output[n] << "|#"
-				end
-			end	
+			max_rating.times {|n| rating < max_rating && n < diff ? output[n] << "| " : output[n] << "|#"}
 			output << ["| "] if max_rating == 0 && rating == 0
 		end
 		output
 	end
+
 end
 
 

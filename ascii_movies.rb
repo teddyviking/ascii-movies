@@ -35,17 +35,39 @@ class IMDBSearcher
 end
 
 class RatingPrinter
-	def initialize(movie)
-		@movie = movie
+	def initialize(movies)
+		@movies = movies
 	end
 
 	def print(format)
 		output = ""
-		unless @movie == ""
-			rating = @movie.rating 
-			rating.times{|n| output << "|#|\n" }
-			output << "| |\n" if rating == 0
+		unless @movies == [""]
+			output = define_ratings_grid
+			output = output.map{|row| row.join}.join("|\n").concat("|\n")
 		end	
+		output
+	end
+
+	def get_highest_rating
+		@movies.map{|movie| movie.rating}.max
+	end
+
+	def define_ratings_grid
+		output =[]
+		max_rating = get_highest_rating
+		max_rating.times{|n| output << []}
+		@movies.each_with_index do |movie, index|
+			rating = movie.rating
+			diff = max_rating - rating
+			max_rating.times do |n|		
+				if rating < max_rating && n < diff			
+					output[n] << "| "		
+				else
+					output[n] << "|#"
+				end
+			end	
+			output << ["| "] if max_rating == 0 && rating == 0
+		end
 		output
 	end
 end

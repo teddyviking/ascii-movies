@@ -91,7 +91,10 @@ class TitlePrinter
 	end
 	def print(format)
 		output = ""
-		output = "1. Ghostbusters" unless @movies == [""]
+		unless @movies == [""]
+			titles = @movies.map {|movie| movie.title}
+			titles.each_with_index{|title, index| output << "#{index + 1}. #{title}\n"}
+		end
 		output
 	end
 

@@ -85,6 +85,14 @@ class RatingPrinter
 	end
 end
 
+class TitlePrinter
+	def initialize(movies)
+	end
+	def print(format)
+		""
+	end
+
+end
 
 
 

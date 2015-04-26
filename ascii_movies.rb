@@ -3,10 +3,17 @@ require 'imdb'
 
 class AsciiMovies
 	def write_ratings(input, output, format)
+		IO.write(output, set_print(input, format))
+	end
+
+	def console_print_ratings(input, output, format)
+		puts set_print(input, format)
+	end
+
+	def set_print(input, format)
 		titles = get_titles(input)
 		movies = get_movies(titles)
 		text = define_text(movies, format)
-		IO.write(output, text)
 	end
 
 	def get_titles(input)

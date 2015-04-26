@@ -100,6 +100,16 @@ class TitlePrinter
 
 end
 
+class InputConversor
+	def initialize(input)
+		@input = input
+	end
+
+	def extract_lines
+		IO.readlines(@input).map{|line|line-"\n"}
+	end
+end
+
 
 
 

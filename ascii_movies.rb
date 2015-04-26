@@ -74,7 +74,6 @@ class RatingPrinter
 		end
 		output
 	end
-
 end
 
 

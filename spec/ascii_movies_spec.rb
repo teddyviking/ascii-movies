@@ -69,7 +69,11 @@ RSpec.describe "Ascii Movies" do
 	end
 	it "TitlePrinter paints one title when a movie passed" do
 		printer = TitlePrinter.new([fake_movie_1])
-		expect(printer.print(format)).to eq("1. Ghostbusters")
+		expect(printer.print(format)).to eq("1. Ghostbusters\n")
+	end
+	it "TitlePrinter paints two titles when two movies are passed" do
+		printer = TitlePrinter.new([fake_movie_1, fake_movie_2])
+		expect(printer.print(format)).to eq("1. Ghostbusters\n2. Once upon a time in the west\n")
 	end
 end
 

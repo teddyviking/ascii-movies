@@ -77,10 +77,10 @@ RSpec.describe "Ascii Movies" do
 	end
 
 	it "Ascii Movies takes a list of movies from a txt and prints their ratings in another one" do
-		ascii_movies = AsciiMovies.new(MovieGetter.new, RatingPrinter.new)
-		input = 'movies_input.txt'
-		output = "movies_result.txt"
-		expected_output = 'expected_result.txt'
+		ascii_movies = AsciiMovies.new
+		input = 'spec/movies_input.txt'
+		output = 'spec/movies_result.txt'
+		expected_output = 'spec/expected_result.txt'
 		ascii_movies.write_ratings(input, output)
 		expect(IO.read(output)).to eq(IO.read(expected_output))
 		IO.write(output, "")

@@ -1,18 +1,19 @@
-| |#|#| | | | | 
-|#|#|#| | | | | 
-|#|#|#| | |#| | 
-|#|#|#| | |#| |
-|#|#|#| | |#| |
-|#|#|#|#| |#| |
-|#|#|#|#|#|#| |
+| | |#| | | | |
+| |#|#| |#|#| |
+|#|#|#|#|#|#|#|
+|#|#|#|#|#|#|#|
+|#|#|#|#|#|#|#|
+|#|#|#|#|#|#|#|
+|#|#|#|#|#|#|#|
+|#|#|#|#|#|#|#|
 |#|#|#|#|#|#|#|
 ---------------
 |1|2|3|4|5|6|7|
 
-1. Ghostbusters
-2. Die Hard
-3. The Godfather
-4. Home alone
-5. Star trek, the new generation
-6. The night of the living dead
-7. Titanic
+1. Los Cazafantasmas (1984)
+2. Jungla de cristal (1988)
+3. El padrino (1972)
+4. Solo en casa (1990)
+5. Star Trek: La nueva generación (1987) (TV Series)
+6. La noche de los muertos vivientes (1968)
+7. Titanic (1997)

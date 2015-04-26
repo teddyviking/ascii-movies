@@ -1,6 +1,19 @@
 require 'pry'
 require 'imdb'
 
+class AsciiMovies
+	def write_ratings(input, output)
+		titles = InputConversor.new(input).extract_lines
+		movies = titles.map do |title| 
+			movie_getter = MovieGetter.new(title, IMDBSearcher.new)
+			movie_getter.get_movie
+		end
+		text = RatingPrinter.new(movies).print("ascii") +"\n" + TitlePrinter.new(movies).print("ascii") 
+		IO.write(output, text)
+	end
+end
+
+
 class MovieGetter
 	def initialize(movie, search_engine)
 		@movie = movie
@@ -23,7 +36,7 @@ class Movie
 	attr_reader :title, :rating
 	def initialize(title, rating)
 		@title = title
-		@rating = rating
+		@rating = rating.to_i
 	end
 end
 
@@ -106,7 +119,7 @@ class InputConversor
 	end
 
 	def extract_lines
-		IO.readlines(@input).map{|line|line-"\n"}
+		IO.readlines(@input).map{|line|line.gsub(/\n/, "")}
 	end
 end
 

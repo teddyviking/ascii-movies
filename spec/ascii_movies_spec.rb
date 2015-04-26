@@ -47,19 +47,19 @@ RSpec.describe "Ascii Movies" do
 
 	it "RatingPrinter paints an empty column when passed a movie with a puntuation of 0" do
 		printer = RatingPrinter.new([fake_movie])
-		expect(printer.print(format)).to eq("| |\n---\n|1|")
+		expect(printer.print(format)).to eq("| |\n---\n|1|\n")
 	end
 	it "RatingPrinter paints a column with one # when passed a movie with a puntuation of 1" do
 		printer = RatingPrinter.new([fake_movie_1])
-		expect(printer.print(format)).to eq("|#|\n\n---\n\n|1|")
+		expect(printer.print(format)).to eq("|#|\n---\n|1|\n")
 	end
 	it "RatingPrinter paints a column with two # when passed a movie with a puntuation of 2" do
 		printer = RatingPrinter.new([fake_movie_2])
-		expect(printer.print(format)).to eq("|#|\n|#|\n\n---\n\n|1|")
+		expect(printer.print(format)).to eq("|#|\n|#|\n---\n|1|\n")
 	end
 	it "RatingPrinter paints two columns when passed two movies" do
 		printer = RatingPrinter.new([fake_movie_2, fake_movie_1])
-		expect(printer.print(format)).to eq("|#| |\n|#|#|\n\n-----\n\n|1|2|")
+		expect(printer.print(format)).to eq("|#| |\n|#|#|\n-----\n|1|2|\n")
 	end
 
 end

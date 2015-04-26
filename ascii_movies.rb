@@ -43,7 +43,7 @@ class RatingPrinter
 		output = ""
 		unless @movies == [""]
 			output = define_ratings_grid
-			output = output.map{|row| row.join}.join("|\n").concat("|\n")
+			output = output.map{|row| row.join}.join("|\n").concat(stablish_ending)
 		end	
 		output
 	end
@@ -73,6 +73,15 @@ class RatingPrinter
 			output << ["| "] if max_rating == 0 && rating == 0
 		end
 		output
+	end
+
+	def stablish_ending
+		basic_ending = "|\n-"
+		@movies.each { |movie| basic_ending << "--" }
+		basic_ending << "\n"
+		@movies.each_with_index {|movie, i| basic_ending << "|#{i+1}" }
+		basic_ending << "|\n"
+		basic_ending
 	end
 end
 

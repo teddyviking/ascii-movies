@@ -31,12 +31,12 @@ RSpec.describe "Ascii Movies" do
 	end
 	let(:fake_movie_1) do
 		instance_double("Movie",
-			:title => "",
+			:title => "Ghostbusters",
 			:rating => 1)
 	end
 	let(:fake_movie_2) do
 		instance_double("Movie",
-			:title => "",
+			:title => "Once upon a time in the west",
 			:rating => 2)
 	end
 
@@ -66,6 +66,10 @@ RSpec.describe "Ascii Movies" do
 	it "TitlePrinter paints nothing when no movie is passed" do
 		printer = TitlePrinter.new([""])
 		expect(printer.print(format)).to eq("")
+	end
+	it "TitlePrinter paints one title when a movie passed" do
+		printer = TitlePrinter.new([fake_movie_1])
+		expect(printer.print(format)).to eq("1. Ghostbusters")
 	end
 end
 

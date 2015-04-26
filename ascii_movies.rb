@@ -2,14 +2,26 @@ require 'pry'
 require 'imdb'
 
 class AsciiMovies
-	def write_ratings(input, output)
-		titles = InputConversor.new(input).extract_lines
-		movies = titles.map do |title| 
+	def write_ratings(input, output, format)
+		titles = get_titles(input)
+		movies = get_movies(titles)
+		text = define_text(movies, format)
+		IO.write(output, text)
+	end
+
+	def get_titles(input)
+		InputConversor.new(input).extract_lines
+	end
+
+	def get_movies(titles)
+		titles.map do |title| 
 			movie_getter = MovieGetter.new(title, IMDBSearcher.new)
 			movie_getter.get_movie
 		end
-		text = RatingPrinter.new(movies).print("ascii") +"\n" + TitlePrinter.new(movies).print("ascii") 
-		IO.write(output, text)
+	end
+
+	def define_text(movies, format)
+		RatingPrinter.new(movies).print(format) +"\n" + TitlePrinter.new(movies).print(format) 
 	end
 end
 

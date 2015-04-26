@@ -81,7 +81,7 @@ RSpec.describe "Ascii Movies" do
 		input = 'spec/movies_input.txt'
 		output = 'spec/movies_result.txt'
 		expected_output = 'spec/expected_result.txt'
-		ascii_movies.write_ratings(input, output)
+		ascii_movies.write_ratings(input, output, "ascii")
 		expect(IO.read(output)).to eq(IO.read(expected_output))
 		IO.write(output, "")
 	end

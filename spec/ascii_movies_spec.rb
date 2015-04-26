@@ -62,6 +62,11 @@ RSpec.describe "Ascii Movies" do
 		expect(printer.print(format)).to eq("|#| |\n|#|#|\n-----\n|1|2|\n")
 	end
 
+
+	it "TitlePrinter paints nothing when no movie is passed" do
+		printer = TitlePrinter.new([""])
+		expect(printer.print(format)).to eq("")
+	end
 end
 
 
